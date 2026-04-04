@@ -1,0 +1,28 @@
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+*.egg
+
+# LoRAモデル重み（別途ホスト or 再学習）
+lmem_model*/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# 環境
+.env
+venv/
+.venv/
+
+# Claude Code
+.claude/

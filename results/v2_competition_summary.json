@@ -1,0 +1,57 @@
+{
+  "competition": "v2",
+  "target": "FileProcessor (2221文字 / 489トークン)",
+  "history": [
+    {
+      "method": "V2-A (貪欲・長い順)",
+      "tokens": 342,
+      "reduction": "30.1%",
+      "script": "compress_v2.py"
+    },
+    {
+      "method": "V2-OPT (セグメントDP)",
+      "tokens": 208,
+      "reduction": "57.5%",
+      "script": "compress_v2_opt.py"
+    },
+    {
+      "method": "V2-OPT2 (パターン追加)",
+      "tokens": 142,
+      "reduction": "71.0%",
+      "script": "compress_v2_opt2.py"
+    },
+    {
+      "method": "V2-FINAL (深層パターン)",
+      "tokens": 121,
+      "reduction": "75.3%",
+      "script": "compress_v2_final.py"
+    },
+    {
+      "method": "V2-FINAL2-a (拡張子追加)",
+      "tokens": 112,
+      "reduction": "77.1%",
+      "script": "compress_v2_final2.py"
+    },
+    {
+      "method": "V2-FINAL2-b (インデント修正)",
+      "tokens": 98,
+      "reduction": "80.0%",
+      "script": "compress_v2_final2.py"
+    },
+    {
+      "method": "V2-FINAL2-c (RAW全吸収)",
+      "tokens": 83,
+      "reduction": "83.0%",
+      "script": "compress_v2_final2.py"
+    },
+    {
+      "method": "V2-FINAL2-d (不自然連結排除)",
+      "tokens": 90,
+      "reduction": "81.6%",
+      "script": "compress_v2_final2.py"
+    }
+  ],
+  "final_score": 90,
+  "final_score_borderline_excluded": 99,
+  "all_lossless": true
+}
