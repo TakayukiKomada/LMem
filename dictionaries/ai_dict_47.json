@@ -1,0 +1,289 @@
+{
+  "description": "AI設計辞書（Claude Opus 4.6、8回のイテレーション）。88.5%ロスレス圧縮を達成。",
+  "entries": 47,
+  "source": "results/v2_56tok_FINAL.json から抽出",
+  "dictionary": [
+    {
+      "pattern": "'from pathlib import Path\\nfrom typing import Optional, List, Dict, Any\\nfrom collections import defaultdict\\nfrom dataclasses import dataclass\\n'",
+      "symbol": "¡",
+      "tokens": 28,
+      "occurrences": 1
+    },
+    {
+      "pattern": "'import os\\nimport sys\\nimport json\\nimport logging\\n\\n\\n'",
+      "symbol": "¢",
+      "tokens": 12,
+      "occurrences": 1
+    },
+    {
+      "pattern": "'@dataclass\\nclass Config:\\n    base_dir: str = \".\"'",
+      "symbol": "£",
+      "tokens": 14,
+      "occurrences": 1
+    },
+    {
+      "pattern": "'    recursive: bool = True\\n    extensions: list[str] = None\\n'",
+      "symbol": "¤",
+      "tokens": 16,
+      "occurrences": 1
+    },
+    {
+      "pattern": "'\\n\\nclass FileProcessor:\\n'",
+      "symbol": "¥",
+      "tokens": 5,
+      "occurrences": 1
+    },
+    {
+      "pattern": "'    def __init__(self, config: Config):\\n        self.config = config\\n        self.base_dir'",
+      "symbol": "¦",
+      "tokens": 21,
+      "occurrences": 1
+    },
+    {
+      "pattern": "' = Path('",
+      "symbol": "§",
+      "tokens": 3,
+      "occurrences": 1
+    },
+    {
+      "pattern": "'config.base_dir)\\n'",
+      "symbol": "¨",
+      "tokens": 4,
+      "occurrences": 1
+    },
+    {
+      "pattern": "'        self._files: list[str] = []\\n        self._processed: dict[str, Any] = {}\\n        self._logger = logging.getLogger(__name__)\\n\\n'",
+      "symbol": "©",
+      "tokens": 32,
+      "occurrences": 1
+    },
+    {
+      "pattern": "'    def scan(self, extensions: Optional[set] = None) -> list[str]:\\n'",
+      "symbol": "ª",
+      "tokens": 18,
+      "occurrences": 1
+    },
+    {
+      "pattern": "'        if not self.base_dir.exists():\\n            raise ValueError('",
+      "symbol": "«",
+      "tokens": 12,
+      "occurrences": 1
+    },
+    {
+      "pattern": "'f\"Directory not found: {self.base_dir}\"'",
+      "symbol": "¬",
+      "tokens": 11,
+      "occurrences": 1
+    },
+    {
+      "pattern": "'        if extensions is None:\\n            extensions = self.config.extensions\\n'",
+      "symbol": "®",
+      "tokens": 13,
+      "occurrences": 1
+    },
+    {
+      "pattern": "'        pattern = \"**/*\" if self.config.recursive else \"*\"\\n'",
+      "symbol": "¯",
+      "tokens": 14,
+      "occurrences": 1
+    },
+    {
+      "pattern": "'        for path in self.base_dir.glob(pattern):\\n            if path.is_file():\\n                if path.suffix in extensions:\\n'",
+      "symbol": "°",
+      "tokens": 24,
+      "occurrences": 1
+    },
+    {
+      "pattern": "'                    self._files.append(str(path))'",
+      "symbol": "±",
+      "tokens": 8,
+      "occurrences": 1
+    },
+    {
+      "pattern": "'\\n                    '",
+      "symbol": "²",
+      "tokens": 2,
+      "occurrences": 3
+    },
+    {
+      "pattern": "'self._logger.debug('",
+      "symbol": "³",
+      "tokens": 5,
+      "occurrences": 1
+    },
+    {
+      "pattern": "'f\"Found: {path}\"'",
+      "symbol": "´",
+      "tokens": 7,
+      "occurrences": 1
+    },
+    {
+      "pattern": "'        self._files = sorted(self._files)\\n        return self._files\\n\\n'",
+      "symbol": "µ",
+      "tokens": 16,
+      "occurrences": 1
+    },
+    {
+      "pattern": "'    def process(self, callback=None) -> dict[str, Any]:\\n        for file_path in self._files:\\n'",
+      "symbol": "¶",
+      "tokens": 23,
+      "occurrences": 1
+    },
+    {
+      "pattern": "'            try:\\n                with open(file_path, \"r\") as f:\\n                    content = f.read()\\n'",
+      "symbol": "·",
+      "tokens": 21,
+      "occurrences": 1
+    },
+    {
+      "pattern": "'                result = callback(content) if callback else content\\n'",
+      "symbol": "¹",
+      "tokens": 11,
+      "occurrences": 1
+    },
+    {
+      "pattern": "'                self._processed'",
+      "symbol": "º",
+      "tokens": 4,
+      "occurrences": 2
+    },
+    {
+      "pattern": "'[file_path]'",
+      "symbol": "»",
+      "tokens": 3,
+      "occurrences": 2
+    },
+    {
+      "pattern": "' = result\\n'",
+      "symbol": "¼",
+      "tokens": 3,
+      "occurrences": 1
+    },
+    {
+      "pattern": "'            except Exception as e:\\n                self._logger.error('",
+      "symbol": "½",
+      "tokens": 12,
+      "occurrences": 1
+    },
+    {
+      "pattern": "'f\"Error: {file_path}: {e}\"'",
+      "symbol": "¾",
+      "tokens": 11,
+      "occurrences": 1
+    },
+    {
+      "pattern": "' = '",
+      "symbol": "¿",
+      "tokens": 2,
+      "occurrences": 20
+    },
+    {
+      "pattern": "'None\\n'",
+      "symbol": "À",
+      "tokens": 2,
+      "occurrences": 2
+    },
+    {
+      "pattern": "'        return self._processed\\n\\n'",
+      "symbol": "Á",
+      "tokens": 6,
+      "occurrences": 1
+    },
+    {
+      "pattern": "'    def summary(self) -> None:\\n'",
+      "symbol": "Â",
+      "tokens": 8,
+      "occurrences": 1
+    },
+    {
+      "pattern": "'        total = len(self._processed)\\n        success = '",
+      "symbol": "Ã",
+      "tokens": 12,
+      "occurrences": 1
+    },
+    {
+      "pattern": "'sum(1 for v in self._processed.values() if v is not None)'",
+      "symbol": "Ä",
+      "tokens": 17,
+      "occurrences": 1
+    },
+    {
+      "pattern": "'\\n        print('",
+      "symbol": "Ç",
+      "tokens": 4,
+      "occurrences": 1
+    },
+    {
+      "pattern": "'f\"Total: {total}, Success: {success}, Failed: {total - success}\"'",
+      "symbol": "É",
+      "tokens": 19,
+      "occurrences": 1
+    },
+    {
+      "pattern": "'def main():\\n    logging.basicConfig(level=logging.INFO)\\n    config = Config('",
+      "symbol": "Í",
+      "tokens": 15,
+      "occurrences": 1
+    },
+    {
+      "pattern": "'base_dir'",
+      "symbol": "Î",
+      "tokens": 2,
+      "occurrences": 7
+    },
+    {
+      "pattern": "'=\"/tmp/'",
+      "symbol": "Ð",
+      "tokens": 3,
+      "occurrences": 1
+    },
+    {
+      "pattern": "'data\", '",
+      "symbol": "Ñ",
+      "tokens": 3,
+      "occurrences": 1
+    },
+    {
+      "pattern": "'extensions=[\".py\", \".txt\"]'",
+      "symbol": "Ó",
+      "tokens": 8,
+      "occurrences": 1
+    },
+    {
+      "pattern": "'    processor = FileProcessor(config)\\n    processor.scan()\\n    processor.process('",
+      "symbol": "Ö",
+      "tokens": 15,
+      "occurrences": 1
+    },
+    {
+      "pattern": "'callback=lambda x: len('",
+      "symbol": "×",
+      "tokens": 6,
+      "occurrences": 1
+    },
+    {
+      "pattern": "'x.split('",
+      "symbol": "Ú",
+      "tokens": 3,
+      "occurrences": 1
+    },
+    {
+      "pattern": "'\"\\\\n\")))\\n'",
+      "symbol": "Ü",
+      "tokens": 3,
+      "occurrences": 1
+    },
+    {
+      "pattern": "'    processor.summary()\\n'",
+      "symbol": "ß",
+      "tokens": 4,
+      "occurrences": 1
+    },
+    {
+      "pattern": "'if __name__ == \"__main__\":\\n    main()\\n'",
+      "symbol": "à",
+      "tokens": 11,
+      "occurrences": 1
+    }
+  ]
+}
