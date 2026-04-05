@@ -1,11 +1,11 @@
 # LMem — Extreme Python Code Compression for LLMs
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/TakayukiKomada/LMem/blob/main/LMem_Middleware.ipynb)
-[![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue)](https://huggingface.co/spaces/TakayukiKomada/lmem-middleware)
+[![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue)](https://huggingface.co/spaces/Takayu/lmem-middleware)
 
 LMem is an experimental compression system that maps Python code patterns to single-token Unicode characters, dramatically reducing the token cost of LLM communication.
 
-> **Try it now:** [Hugging Face Space](https://huggingface.co/spaces/TakayukiKomada/lmem-middleware) (no install needed) | [Google Colab](https://colab.research.google.com/github/TakayukiKomada/LMem/blob/main/LMem_Middleware.ipynb)
+> **Try it now:** [Hugging Face Space](https://huggingface.co/spaces/Takayu/lmem-middleware) (no install needed) | [Google Colab](https://colab.research.google.com/github/TakayukiKomada/LMem/blob/main/LMem_Middleware.ipynb)
 
 ## Concept
 
