@@ -79,7 +79,7 @@ experiment_understanding.py  → Test whether Opus can understand compressed cod
 |------|--------|-----------|
 | Original code | 1,140 | baseline |
 | Fixed-dict (453 entries) | ~985 | 13.7% |
-| AI accent dict (9,076 entries) | ~137 | 40–55% (generalizes to unseen code) |
+| AI accent dict (9,076 entries) | ~137 | ~50% (generalizes to unseen code) |
 | Dynamic compressed | 31 | 97.3% (file-specific, no generalization) |
 
 ### Understanding (Claude Opus)
@@ -141,7 +141,7 @@ restored = decompress_from_api(compressed, used)
 | Dictionary | 9,076 entries (syntax 2,796 + ai_accent 6,280) |
 | Compression | DP-optimal (greedy fallback for safety) |
 | Lossless | Always guaranteed |
-| Typical reduction | 40–55% on unseen Python code |
+| Typical reduction | ~50% on unseen Python code |
 
 ## Token Counting
 
