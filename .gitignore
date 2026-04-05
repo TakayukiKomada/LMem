@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+*.pyo
+.env
+*.egg-info/
+dist/
+build/
+.ipynb_checkpoints/
+lmem_model/
+lmem_model_prove/
+dict_b64.txt
+dict_b64_lines.txt
+build_notebook.py
