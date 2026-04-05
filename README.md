@@ -7,6 +7,32 @@ LMem is an experimental compression system that maps Python code patterns to sin
 
 > **Try it now:** [Hugging Face Space](https://huggingface.co/spaces/Takayu/lmem-middleware) (no install needed) | [Google Colab](https://colab.research.google.com/github/TakayukiKomada/LMem/blob/main/LMem_Middleware.ipynb)
 
+## Getting Started
+
+Three ways to use LMem — pick whichever suits you:
+
+### Option 1: Hugging Face Space (easiest — no install, no login)
+
+1. Open [https://huggingface.co/spaces/Takayu/lmem-middleware](https://huggingface.co/spaces/Takayu/lmem-middleware)
+2. **Compress tab**: Paste your Python code → click **Compress** → see result
+3. **Copy the JSON** in the "Save this JSON" box (this is your restore key)
+4. **Restore tab**: Paste the JSON → click **Restore** → get back the original code
+
+### Option 2: Google Colab (no install, full Python access)
+
+1. Click the **"Open in Colab"** badge above (or [this link](https://colab.research.google.com/github/TakayukiKomada/LMem/blob/main/LMem_Middleware.ipynb))
+2. **Runtime → Run all**
+3. Scroll to **"Try it"** — paste your code in `MY_CODE` and run the cell
+4. To restore: `decompress(result["compressed"], result["used"])`
+
+### Option 3: CLI (local)
+
+```bash
+pip install tiktoken
+python lmem.py compress your_script.py
+python lmem.py decompress compressed_output.txt
+```
+
 ## Concept
 
 When LLMs communicate with each other (agent-to-agent), they pay token costs per message. LMem compresses Python code by replacing repeated patterns with single-token Unicode characters — achieving up to **97%+ token reduction** with lossless round-trip.
@@ -67,53 +93,44 @@ experiment_understanding.py  → Test whether Opus can understand compressed cod
 - Token accuracy: 84.3%
 - Training time: ~67 minutes (RTX 4070 Ti)
 
-## Middleware (Google Colab)
+## Middleware Details
 
-**`LMem_Middleware.ipynb`** — Self-contained, ready-to-use middleware. The 9,076-entry dictionary is embedded in the notebook. No file uploads needed.
-
-### Quick Start
-
-1. Open `LMem_Middleware.ipynb` in Google Colab
-2. **Runtime → Run all**
-3. Scroll to **"Try it"**, paste your code
-4. Done — results are shown automatically
-
-### Usage
+### Python API (Colab / local)
 
 ```python
-# Compress + verify
+# Compress
 result = process(your_code)
 
-# Restore from result
+# Restore
 restored = decompress(result["compressed"], result["used"])
 assert restored == your_code  # always passes
 ```
 
-### Save / Load
+### Save / Load (keep compressed data for later)
 
 ```python
 import json
 
-# Save compressed result to file
+# Save
 with open("compressed.json", "w") as f:
     json.dump({"compressed": result["compressed"], "used": result["used"]}, f)
 
-# Load and restore later
+# Load and restore
 with open("compressed.json", "r") as f:
     loaded = json.load(f)
 restored = decompress(loaded["compressed"], loaded["used"])
 ```
 
-### API Integration
+### LLM API Integration
 
 ```python
-# Before sending to LLM API — compress to save tokens
+# Compress before sending to LLM API
 compressed, used = compress_for_api(code)
 
 # Generate a system prompt so the LLM understands the compressed code
 system_prompt = make_dict_prompt(used)
 
-# After receiving LLM response — restore
+# Restore the LLM response
 restored = decompress_from_api(compressed, used)
 ```
 
@@ -125,24 +142,6 @@ restored = decompress_from_api(compressed, used)
 | Compression | DP-optimal (greedy fallback for safety) |
 | Lossless | Always guaranteed |
 | Typical reduction | 40–55% on unseen Python code |
-
-## CLI Quick Start
-
-```bash
-pip install -r requirements.txt
-
-# Compress a Python file
-python lmem.py compress your_script.py
-
-# Decompress
-python lmem.py decompress compressed_output.txt
-
-# Run demo
-python lmem.py demo
-
-# Test round-trip on all .py files in a directory
-python lmem.py test
-```
 
 ## Token Counting
 
