@@ -14,9 +14,8 @@ Three ways to use LMem — pick whichever suits you:
 ### Option 1: Hugging Face Space (easiest — no install, no login)
 
 1. Open [https://huggingface.co/spaces/Takayu/lmem-middleware](https://huggingface.co/spaces/Takayu/lmem-middleware)
-2. **Compress tab**: Paste your Python code → click **Compress** → see result
-3. **Copy the JSON** in the "Save this JSON" box (this is your restore key)
-4. **Restore tab**: Paste the JSON → click **Restore** → get back the original code
+2. **Compress tab**: Paste your Python code → click **Compress** → copy the result
+3. **Restore tab**: Paste the result → click **Restore** → get back the original code
 
 ### Option 2: Google Colab (no install, full Python access)
 
